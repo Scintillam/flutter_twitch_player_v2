@@ -44,14 +44,8 @@ class _TwitchPlayerIFrameState extends State<TwitchPlayerIFrame> {
         borderRadius: widget.borderRadius ?? BorderRadius.zero,
         child: InAppWebView(
           initialUrlRequest: URLRequest(
-            url: Uri(
-              scheme: 'https',
-              host: 'player.twitch.tv',
-              queryParameters: {
-                "channel": widget.channel,
-                "parent": widget.parent,
-              },
-            ),
+            url: WebUri(
+                'https://player.twitch.tv?channel=${widget.channel}&parent=${widget.parent}'),
           ),
           onEnterFullscreen: (_) => widget.controller.enterFullscreen(),
           onExitFullscreen: (_) => widget.controller.exitFullscreen(),
